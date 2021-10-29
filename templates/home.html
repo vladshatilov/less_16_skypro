@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>#}
+<script type="text/javascript">
+    function get_action(form) {
+        form.action = '/users/'+ document.getElementById('put_input').value;
+    }
+    function get_action2(form) {
+        form.action = '/users/'+ document.getElementById('delete_input').value;
+    }
+</script>
+<div class="wrapper">
+    <div class="container">
+        <div class="user_add">
+            <span>Add user:</span>
+            <form action="/users" method="post" class="user_add_form">
+                <input type="text" name="id" class="add_field__id" placeholder="id"/>
+                <input type="text" name="first_name" class="add_field__first_name" placeholder="first_name"/>
+                <input type="text" name="last_name" class="add_field__last_name" placeholder="last_name"/>
+                <input type="text" name="age" class="add_field__age" placeholder="age"/>
+                <input type="text" name="email" class="add_field__email" placeholder="email"/>
+                <input type="text" name="role" class="add_field__role" placeholder="role"/>
+                <input type="text" name="phone" class="add_field__phone" placeholder="phone"/>
+                <button type="submit" class="add_user__button">Add</button>
+            </form>
+            <span>Add to change:</span>
+            <form onsubmit="get_action(this);" id="put_form" method="post" class="user_edit_form">
+                <input type="hidden" name="_method" value="put" />
+                <input type="text" id="put_input" name="id" class="edit_field__id" placeholder="id"/>
+                <input type="text" name="first_name" class="edit_field__first_name" placeholder="first_name"/>
+                <input type="text" name="last_name" class="edit_field__last_name" placeholder="last_name"/>
+                <input type="text" name="age" class="edit_field__age" placeholder="age"/>
+                <input type="text" name="email" class="edit_field__email" placeholder="email"/>
+                <input type="text" name="role" class="edit_field__role" placeholder="role"/>
+                <input type="text" name="phone" class="edit_field__phone" placeholder="phone"/>
+                <button type="submit" class="edit_user__button">Change</button>
+            </form>
+            <span>Delete by id:</span>
+            <form onsubmit="get_action2(this);" id="delete_form" method="post" class="user_delete_form">
+                <input type="hidden" name="_method" value="delete" />
+                <input type="text" id="delete_input" name="id" class="delete_field__id" placeholder="id"/>
+                <button type="submit" class="delete_user__button">Totally delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
